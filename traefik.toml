@@ -1,0 +1,30 @@
+[global]
+  sendAnonymousUsage = false
+
+[accessLog]
+
+[log]
+  level = "DEBUG"
+  format = "common"
+
+[providers]
+  [providers.docker]
+    endpoint = "unix:///var/run/docker.sock"
+    watch = true
+    exposedByDefault = true
+    swarmMode = false
+
+[api]
+  dashboard = true
+  debug = false
+  insecure = true
+
+[entryPoints]
+  [entryPoints.insecure]
+    address = ":80"
+  [entryPoints.metrics]
+    address = ":8082"
+
+[metrics]
+  [metrics.prometheus]
+    entryPoint = "metrics"
