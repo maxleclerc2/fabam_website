@@ -1,22 +1,25 @@
 version: "3.9"
 services:
-    fabam_website:
+    web:
         build : . # (1)
         labels:
-            - "traefik.http.routers.fabam_website.rule=PathPrefix(`/`)"
-            - "traefik.http.middlewares.fabam_website.stripPrefix.prefixes=/"
-            - "traefik.http.routers.fabam_website.middlewares=fabam_website@docker"
+            - "traefik.http.routers.web.rule=PathPrefix(`/`)"
+            - "traefik.http.middlewares.web.stripPrefix.prefixes=/"
+            - "traefik.http.routers.web.middlewares=web@docker"
         deploy:
             replicas: 3
+
     traefik:
         image: traefik:2.5
         restart: unless-stopped
         ports:
             - "80:80"
             - "8080:8080"
+            - "8082:8082"
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock:ro
             - ./traefik.toml:/traefik.toml
+
     prometheus:
         image: prom/prometheus:v2.10.0
         container_name: prometheus
@@ -32,6 +35,7 @@ services:
             - "traefik.backend=prometheus"
             - "traefik.frontend.rule=Host:prometheus.localhost"
             - "traefik.port=9090"
+
     grafana:
         image: grafana/grafana
         ports:
