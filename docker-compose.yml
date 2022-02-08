@@ -23,6 +23,13 @@ services:
             - NEO4J_EDITION=docker_compose
             - NEO4J_dbms_mode=CORE
 
+    minecraft:
+        image: sirplexus/minecraft-server-standalone:1.18.1
+        ports:
+            -   "25565:25565/tcp"
+        environment:
+            - RAM=2G
+
     traefik:
         image: traefik:2.5
         restart: unless-stopped

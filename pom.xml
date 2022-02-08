@@ -17,6 +17,7 @@
         <!-- Dependencies -->
         <spring-boot.version>2.6.2</spring-boot.version>
         <mockito-server.version>5.11.2</mockito-server.version>
+        <thymeleaf.version>2.6.2</thymeleaf.version>
 
         <!-- Test dependencies -->
         <junit.version>5.8.2</junit.version>
@@ -38,6 +39,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring-boot.version}</version>
+        </dependency>
+
+        <!-- Thymeleaf dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${thymeleaf.version}</version>
         </dependency>
 
         <!-- Micrometer Prometheus registry  -->
