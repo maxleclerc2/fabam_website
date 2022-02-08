@@ -2,5 +2,5 @@
 .idea/
 *.iml
 # Maven
-target/
+web/target/
 

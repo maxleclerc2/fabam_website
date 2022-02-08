@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <body>
+        <div th:fragment="navbar">
+            <div>
+                <div>
+                    <button>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <a href="#" th:href="@{/}">Fédération Bachelor des Arts et Métiers</a>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <a href="#" th:href="@{/}">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" th:href="@{/greeting?name=moi}">Greeting</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

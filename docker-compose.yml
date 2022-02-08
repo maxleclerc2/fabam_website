@@ -1,7 +1,7 @@
 version: "3.9"
 services:
     web:
-        build : .
+        build : ./web
         labels:
             - "traefik.http.routers.web.rule=PathPrefix(`/`)"
             - "traefik.http.middlewares.web.stripPrefix.prefixes=/"
@@ -24,11 +24,25 @@ services:
             - NEO4J_dbms_mode=CORE
 
     minecraft:
-        image: sirplexus/minecraft-server-standalone:1.18.1
+        build: ./minecraft
         ports:
             -   "25565:25565/tcp"
-        environment:
-            - RAM=2G
+        volumes:
+            - ./minecraft/logs:/home/server/logs
+            - ./minecraft/plugins:/home/server/plugins
+            - ./minecraft/world:/home/server/world
+            - ./minecraft/world_nether:/home/server/world_nether
+            - ./minecraft/world_the_end:/home/server/world_the_end
+            - ./minecraft/eula.txt:/home/server/eula.txt
+            - ./minecraft/server.properties:/home/server/server.properties
+            - ./minecraft/ops.json:/home/server/ops.json
+            - ./minecraft/permissions.yml:/home/server/permissions.yml
+            - ./minecraft/bukkit.yml:/home/server/bukkit.yml
+            - ./minecraft/whitelist.json:/home/server/whitelist.json
+            - ./minecraft/banned-players.json:/home/server/banned-players.json
+            - ./minecraft/banned-ips.json:/home/server/banned-ips.json
+            - ./minecraft/commands.yml:/home/server/commands.yml
+            - ./minecraft/usercache.json:/home/server/usercache.json
 
     traefik:
         image: traefik:2.5

@@ -1,0 +1,3 @@
+debug:
+  pluginName: BachJukebox
+  socketPort: 9000

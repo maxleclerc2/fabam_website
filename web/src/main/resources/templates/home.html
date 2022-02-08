@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Hello index</title>
+    </head>
+
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <body>
+        <p>Hello world!</p>
+        <p th:text="${serverTime}"/>
+    </body>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</html>
